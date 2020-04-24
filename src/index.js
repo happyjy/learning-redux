@@ -1,60 +1,29 @@
 import { createStore } from "redux";
 
-//#1.1 createStore/ redecuer
-//  createStore(reducer).getState();
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+const ul = document.querySelector("ul");
 
-//#1.2 Actions: store의 값을 변경
-// createStore(reducer).dispatch( {type: ""} );
+const ADD_TODO = "ADD_TODO";
+const DELETE_TODO = "DELETE_TODO";
 
-//#1.3 Subscriptions: dispatch 이후 동작
-// createStore(reducer).subscribe(function(){});
-
-//#1.4 refactoring
-//  disaptch action type을 상수로 쓰는 이유는? => react에서 에러 메세지가 나온다. 
-
-//reducer
-const add = document.getElementById("add");
-const minus = document.getElementById("minus");
-const number = document.querySelector("span");
-number.innerText = 0;
-
-const ADD = "ADD";
-const MINUS = "MINUS";
-
-const countModifier = (count = 0, action) => {
-  console.log({count, action}); //eg) action = { type: "MINUS", count:1 }
-  
+const reducer = (state = [], action) => {
+  console.log(action);
   switch (action.type) {
-    case "ADD":
-      return count + 1;
-      break;
-    case "MINUS":
-      return count -1;
-      break;
+    case ADD_TODO:
+      return [];
+    case DELETE_TODO:
+      return [];
     default:
-      return count;
-      break;
+      return state;
   }
 }
 
-const countStore = createStore(countModifier);
+const store = createStore(reducer);
 
-const onChange = () => {
-  number.innerText = countStore.getState();
-}
-
-countStore.subscribe(onChange);
-
-const handleAdd = () => {
-  countStore.dispatch({ type: ADD });
-}
-
-const handleMinus = () => {
-  countStore.dispatch({ type: MINUS });
-}
-
-
-add.addEventListener("click", handleAdd);
-minus.addEventListener("click", handleMinus);
-
-console.log(countStore.getState());
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const toDo = input.value;
+  input.value = '';
+  store.dispatch({ type: ADD_TODO, text: toDo});
+})
