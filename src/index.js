@@ -8,10 +8,10 @@ const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 
 const reducer = (state = [], action) => {
-  console.log(action);
+  console.log({state, action});
   switch (action.type) {
     case ADD_TODO:
-      return [];
+      return [{ text: action.text, id: Date.now()}, ...state];
     case DELETE_TODO:
       return [];
     default:
@@ -20,6 +20,8 @@ const reducer = (state = [], action) => {
 }
 
 const store = createStore(reducer);
+
+store.subscribe( () => console.log("### subscribe(): ", store.getState()) );
 
 form.addEventListener("submit", e => {
   e.preventDefault();
