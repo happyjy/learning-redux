@@ -21,11 +21,33 @@ const reducer = (state = [], action) => {
 
 const store = createStore(reducer);
 
-store.subscribe( () => console.log("### subscribe(): ", store.getState()) );
+const dispatchDeleteTodo = e => {
+}
 
-form.addEventListener("submit", e => {
+const paintTodos = () => {
+  const toDos = store.getState();
+  ul.innerHTML = "";
+  toDos.forEach(todo => {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    
+    btn.innerText = "DEL";
+    btn.addEventListener("click", dispatchDeleteTodo);
+    
+    li.id = todo.id;
+    li.innerText = todo.text;
+    li.appendChild(btn);
+    ul.appendChild(li);
+
+  })
+}
+
+store.subscribe( paintTodos );
+
+const submit = e => {
   e.preventDefault();
   const toDo = input.value;
   input.value = '';
-  store.dispatch({ type: ADD_TODO, text: toDo});
-})
+  store.dispatch({ type: ADD_TODO, text: toDo });
+}
+form.addEventListener("submit", submit)
