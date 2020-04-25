@@ -34,7 +34,7 @@ ReactDOM.render(
  *  - component에서 comnnect를 사용해서 store.js에 있는 store에 대해서 dispatch, action Creators를 처리 할 필요가 없다.
  *  - connect에 두개의 function으로 state와 dispatch 객체들을 컴포넌트 props로 넘겨 사용할 수 있게 됐다.
  * 
- * 5. deleteTodo 구현!
+ * 5. delete  구현!
  *  - ToDo component에 del btn이 있다! 
  *    이 버튼에 delete dispatch하는데 필요한 정보 3가지(아래 참고)를 활용해 mapDispatchToProps를 만들어 button click event에서 사용하도록 한다. 
  *  - dispatch하는데 필요한 정보 3가지
@@ -56,6 +56,10 @@ ReactDOM.render(
         <Route> Detail </Route>
       </Router>
  
+ * 7. react-redux에서 사용하는 다음 두가지는(mapStateToProps, mapDispatchToProps)
+      vanilla redux에서는 아래와 같은 역학을 합니다.
+    - mapStateToProps: store.getState()
+    - mapDispatchToProps: store. dispatch()
  * redux, action, storeㄴ
  */
 
