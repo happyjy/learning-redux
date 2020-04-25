@@ -1,9 +1,10 @@
 import React, { useState }from "react";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
+import ToDo from "../component/ToDo";
 
 function Home({ toDos, addToDo, dispatch }){
-  console.log("### Home component: ", {toDos, addToDo, dispatch});
+  console.log("### Home > component: ", {toDos, addToDo, dispatch});
   const [text, setText] = useState("");
 
   function onChange(e){
@@ -11,7 +12,7 @@ function Home({ toDos, addToDo, dispatch }){
   }
 
   function onSubmit(e){
-    console.log("### onSubmit: ", text);
+    console.log("### Home > onSubmit: ", text);
     e.preventDefault();
     setText("");
     
@@ -26,7 +27,9 @@ function Home({ toDos, addToDo, dispatch }){
         <input type="input" value={text} onChange={onChange}></input>
         <button>Add</button>
       </form> 
-      <ul>{JSON.stringify(toDos)}</ul>
+      <ul>{toDos.map( toDo => <ToDo key={toDo.id} {...toDo}/>) }</ul>
+      {/* <ul>{toDos.map( toDo => <ToDo key={toDo.id} text={toDo.text} id={toDo.id}/>) }</ul> */}
+      {/* <ul>{JSON.stringify(toDos)}</ul> */}
     </>
   )
 }
@@ -34,12 +37,12 @@ function Home({ toDos, addToDo, dispatch }){
 //connect를 사용해서 Home으로 보내주는 props에 추가 될 수 있도록 허용 
 //mapStateToProps return에 보내주는 값은 Home props로 받을 수 있다. 
 function mapStateToProps(state, ownProps){
-  console.log("### mapStateToProps: ", {state, ownProps});
+  console.log("### Home > mapStateToProps: ", {state, ownProps});
   return { toDos: state };
 }
 
 function mapDispatchToProps(dispatch, ownProps){
-  console.log("### mapDispatchToProps: ", {dispatch, ownProps});
+  console.log("### Home > mapDispatchToProps: ", {dispatch, ownProps});
   return { 
     dispatch,
     addToDo: text => dispatch(actionCreators.addToDo(text)) //disaptch에 action을 넣어준 것이다.

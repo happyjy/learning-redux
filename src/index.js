@@ -13,13 +13,17 @@ ReactDOM.render(
 
 /**
  * 
- * 1. Provider(react-redux)에 생성한 "stroe"를 설정함으로 store가 변경될때 App에서 store를 사용할 수 있다. 
+ * 1. Provider(react-redux)에 생성한 "store"를 설정함으로 store가 변경될때 App에서 store를 사용할 수 있다. 
+ *  - Provider 설정 위치: store를 사요알 component에 컴포넌트 형식으로 감싸면 된다. 
+ *  - [Study list]태그를 감싸는 형태로 어떻게 하위 컴포넌트에 store를 사용하는건지 확인해보자!
+ * 
  * 2. connect fucntion의 첫번째 arguments
  *  - 공식문서: https://react-redux.js.org/using-react-redux/connect-mapstate
  *  - component와 store를 연결해주는 react-redux function
  *  - 아래와 같이 써주게 되면 Home component에 mapStateToProps 객체를 사용 할 수 있다.
  *      connect(mapStateToProps)(Home);
  *    store.getState()라고 보면 되겠다.
+ * 
  * 3. connect function의 두번째 arguments
  *  - 공식문서: https://react-redux.js.org/using-react-redux/connect-mapdispatch
  *  - store.dispatch()를 구현하기 위한 것 
@@ -29,6 +33,17 @@ ReactDOM.render(
  * 4. connect 정리 ! 
  *  - component에서 comnnect를 사용해서 store.js에 있는 store에 대해서 dispatch, action Creators를 처리 할 필요가 없다.
  *  - connect에 두개의 function으로 state와 dispatch 객체들을 컴포넌트 props로 넘겨 사용할 수 있게 됐다.
+ * 
+ * 5. deleteTodo 구현!
+ *  - ToDo component에 del btn이 있다! 
+ *    이 버튼에 delete dispatch하는데 필요한 정보 3가지(아래 참고)를 활용해 mapDispatchToProps를 만들어 button click event에서 사용하도록 한다. 
+ *  - dispatch하는데 필요한 정보 3가지
+ *    : store, 
+ *    : actionCreator, 
+ *    : redux dispatch(connect의 두번째 파라미터 function의 첫번째 파라미터 dispatch === mapDispatchToProps function의 첫번째 파라미터)을 사용해
+ * 
+ * 
+ * redux, action, store
  */
 
 
