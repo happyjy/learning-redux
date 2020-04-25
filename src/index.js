@@ -42,8 +42,21 @@ ReactDOM.render(
  *    : actionCreator, 
  *    : redux dispatch(connect의 두번째 파라미터 function의 첫번째 파라미터 dispatch === mapDispatchToProps function의 첫번째 파라미터)을 사용해
  * 
- * 
- * redux, action, store
+ * 6. Detail Page
+ *  - Home에서 todo list를 작성하고 Link를 통해서 Detail로 넘어길떼 
+ *    Detail component 화면로드 시 mapStateToProps에서 state는 현재 입력한 toDos 배열이다.
+    - mapStateToProps 첫, 두번째 파람 정보 
+      : state = store.getState();
+      : ownProps - Link(react-router-dome)의 정보( { history, location, match, staticContext }) 
+    - Component 구조 
+      <Provider> App </Provider> 
+      ㄴ App: 
+      <Router> 
+        <Route> Home </Route>
+        <Route> Detail </Route>
+      </Router>
+ 
+ * redux, action, storeㄴ
  */
 
 
