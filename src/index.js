@@ -14,9 +14,21 @@ ReactDOM.render(
 /**
  * 
  * 1. Provider(react-redux)에 생성한 "stroe"를 설정함으로 store가 변경될때 App에서 store를 사용할 수 있다. 
- * 2. connect 
- *  - component와 store를 연결해주는 react-redux 객체
- * 
+ * 2. connect fucntion의 첫번째 arguments
+ *  - 공식문서: https://react-redux.js.org/using-react-redux/connect-mapstate
+ *  - component와 store를 연결해주는 react-redux function
+ *  - 아래와 같이 써주게 되면 Home component에 mapStateToProps 객체를 사용 할 수 있다.
+ *      connect(mapStateToProps)(Home);
+ *    store.getState()라고 보면 되겠다.
+ * 3. connect function의 두번째 arguments
+ *  - 공식문서: https://react-redux.js.org/using-react-redux/connect-mapdispatch
+ *  - store.dispatch()를 구현하기 위한 것 
+ *  - 아래와 같이 mapDispatchToProps function을 작성해 connect 두번째 파라미터로 넘기면 component에 dispatch를 사용해 store에 있는 action을 사용해서 store state를 변경합니다.
+ *    connect(mapStateToProps, mapDispatchToProps)(Home);
+ *
+ * 4. connect 정리 ! 
+ *  - component에서 comnnect를 사용해서 store.js에 있는 store에 대해서 dispatch, action Creators를 처리 할 필요가 없다.
+ *  - connect에 두개의 function으로 state와 dispatch 객체들을 컴포넌트 props로 넘겨 사용할 수 있게 됐다.
  */
 
 
