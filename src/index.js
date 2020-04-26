@@ -1,14 +1,14 @@
 import React from "react";
-import ReactDOM from"react-dom";
+import ReactDOM from "react-dom";
 import App from "./component/App";
 import { Provider } from "react-redux";
 import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 /**
@@ -63,15 +63,7 @@ ReactDOM.render(
  * redux, action, storeㄴ
  */
 
-
-
-
-
-
-
-
-
- /* 
+/* 
  To use connect(), you need to define a special function called mapStateToProps that describes how to transform the current Redux store state into the props you want to pass to a presentational component you are wrapping. 
  
  */
