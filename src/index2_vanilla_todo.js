@@ -1,12 +1,14 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
+// debugger;
+console.log('### index2_vanilla_todo.js');
 
-const form = document.querySelector("form");
-const input = document.querySelector("input");
-const ul = document.querySelector("ul");
+const form = document.querySelector('form');
+const input = document.querySelector('input');
+const ul = document.querySelector('ul');
 
 //
-const ADD_TODO = "ADD_TODO";
-const DELETE_TODO = "DELETE_TODO";
+const ADD_TODO = 'ADD_TODO';
+const DELETE_TODO = 'DELETE_TODO';
 
 //
 const addToDo = (text) => {
@@ -49,13 +51,13 @@ const dispatchDeleteTodo = (e) => {
 
 const paintTodos = () => {
   const toDos = store.getState();
-  ul.innerHTML = "";
+  ul.innerHTML = '';
   toDos.forEach((todo) => {
-    const li = document.createElement("li");
-    const btn = document.createElement("button");
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
 
-    btn.innerText = "DEL";
-    btn.addEventListener("click", dispatchDeleteTodo);
+    btn.innerText = 'DEL';
+    btn.addEventListener('click', dispatchDeleteTodo);
 
     li.id = todo.id;
     li.innerText = todo.text;
@@ -69,8 +71,8 @@ store.subscribe(paintTodos);
 const submit = (e) => {
   e.preventDefault();
   const toDo = input.value;
-  input.value = "";
+  input.value = '';
   // store.dispatch({ type: ADD_TODO, text: toDo });
   dispatchAddTodo(toDo);
 };
-form.addEventListener("submit", submit);
+form.addEventListener('submit', submit);

@@ -1,23 +1,26 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { actionCreators } from "../store";
-import ToDo from "../component/ToDo";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { actionCreators } from '../store';
+import ToDo from '../component/ToDo';
 
 function Home({ toDos, addToDo, dispatch }) {
-  console.log("### Home > component: ", { toDos, addToDo, dispatch });
-  const [text, setText] = useState("");
+  console.log('### Home.js > component: ', { toDos, addToDo, dispatch });
+  const [text, setText] = useState('');
 
   function onChange(e) {
     setText(e.target.value);
   }
 
   function onSubmit(e) {
-    console.log("### Home > onSubmit: ", text);
+    console.log('### Home.js > onSubmit: ', text);
     e.preventDefault();
-    setText("");
+    setText('');
 
-    // #dispatch 하는 방법
-    // dispatch(actionCreators.addTodo(text));
+    console.log(dispatch);
+    /* 
+      # dispatch 하는 방법
+        * addToDo = (text) => dispatch(actionCreators.addToDo(text))
+    */
     addToDo(text);
   }
   return (
@@ -38,18 +41,21 @@ function Home({ toDos, addToDo, dispatch }) {
   );
 }
 
-//connect를 사용해서 Home으로 보내주는 props에 추가 될 수 있도록 허용
-//mapStateToProps return에 보내주는 값은 Home props로 받을 수 있다.
+/* 
+  # connect hoc를 통해서 할 수 있는 것?
+    * Home으로 보내주는 props에 추가 될 수 있도록 허용
+    * 그래서 "mapStateToProps", "mapDispatchToProps" 함수 return 값은 Home 컴포넌트(connect hoc로 설정한 commponent)의 props로 받을 수 있다.
+*/
 function mapStateToProps(state, ownProps) {
-  console.log("### Home > mapStateToProps: ", { state, ownProps });
+  console.log('### Home > mapStateToProps: ', { state, ownProps });
   return { toDos: state };
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-  console.log("### Home > mapDispatchToProps: ", { dispatch, ownProps });
+  console.log('### Home > mapDispatchToProps: ', { dispatch, ownProps });
   return {
+    addToDo: (text) => dispatch(actionCreators.addToDo(text)), //# disaptch에 action을 넣어준 것이다.
     dispatch,
-    addToDo: (text) => dispatch(actionCreators.addToDo(text)), //disaptch에 action을 넣어준 것이다.
   };
 }
 

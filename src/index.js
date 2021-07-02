@@ -1,14 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./component/App";
-import { Provider } from "react-redux";
-import store from "./store";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './component/App';
+import { Provider } from 'react-redux';
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root"),
+  document.getElementById('root'),
 );
 
 /**
@@ -20,7 +20,7 @@ ReactDOM.render(
  * 2. connect fucntion의 첫번째 arguments
  *  - 공식문서: https://react-redux.js.org/using-react-redux/connect-mapstate
  *  - component와 store를 연결해주는 react-redux function
- *  - 아래와 같이 써주게 되면 Home component에 mapStateToProps 객체를 사용 할 수 있다.
+ *  - 아래와 같이 써주게 되면 Home component에 mapStateToProps 함수에서 반환한 객체를 사용 할 수 있다.
  *      connect(mapStateToProps)(Home);
  *    store.getState()라고 보면 되겠다.
  * 
