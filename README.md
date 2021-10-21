@@ -1,4 +1,7 @@
-# learning-redux
+# learning-redux 
+
+> redux를 vanilla js에서도 사용해보자  
+> react에서도 사용 하는 방법까지 설명
 
 - [learning-redux](#learning-redux)
 - [테스트 방법](#테스트-방법)
