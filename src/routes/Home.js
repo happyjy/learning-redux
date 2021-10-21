@@ -17,7 +17,7 @@ function Home({ toDos, addToDo, dispatch }) {
     setText('');
 
     console.log(dispatch);
-    /* 
+    /*
       # dispatch 하는 방법
         * addToDo = (text) => dispatch(actionCreators.addToDo(text))
     */
@@ -27,7 +27,7 @@ function Home({ toDos, addToDo, dispatch }) {
     <>
       <h1>To Do</h1>
       <form onSubmit={onSubmit}>
-        <input type="input" value={text} onChange={onChange}></input>
+        <input type="input" value={text} onChange={onChange} />
         <button>Add</button>
       </form>
       <ul>
@@ -41,7 +41,7 @@ function Home({ toDos, addToDo, dispatch }) {
   );
 }
 
-/* 
+/*
   # connect hoc를 통해서 할 수 있는 것?
     * Home으로 보내주는 props에 추가 될 수 있도록 허용
     * 그래서 "mapStateToProps", "mapDispatchToProps" 함수 return 값은 Home 컴포넌트(connect hoc로 설정한 commponent)의 props로 받을 수 있다.
